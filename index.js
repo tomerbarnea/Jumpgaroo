@@ -13,9 +13,6 @@ let force = 0;
 let jumpGauge = 0;
 const jumpMaxGauge = 2000;
 
-//jumpSfx = new Audio('./audio/jumpSfx.mp3')
-//landSfx = new Audio('./audio/landSfx.mp3')
-
 //Instance of background
 const background = new Sprite({
     position: {
