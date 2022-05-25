@@ -29,15 +29,6 @@ function sceneHandler(){
                 }, 100);
                 console.log(currentScene)
                 break
-                        case scene3: 
-                currentScene = scene4
-                player.position.y = canvas.height
-                switchingScene = true;
-                setTimeout(() => { switchingScene = false;
-                    
-                }, 100);
-                console.log(currentScene)
-                break
             case scene4: 
                 currentScene = scene5
                 player.position.y = canvas.height
