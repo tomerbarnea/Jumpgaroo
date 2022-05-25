@@ -5,10 +5,9 @@ canvas.width = 480;
 canvas.height = 720; 
 c.fillRect(0, 0, canvas.width, canvas.height);
 
-
 //global variables
 let lastJump = Date.now();
-const gravity = 0.7;
+let gravity = 0.7;
 let force = 0;
 let jumpGauge = 0;
 const jumpMaxGauge = 2000;
@@ -292,31 +291,21 @@ const platformsScene5 = [new Sprite({
         x: 30,
         y: 550
     },
-    width: 74,
-    height: 37,
-    imgSrc: './img/Background/newcloudscene5.png',
-    borderY : 565,
-    borderWidth : 64
-}), new Sprite({
-    position: {
-        x: 220,
-        y: 500
-    },
-    width: 45,
-    height: 32,
-    imgSrc: './img/Background/cloudsmallscene5.png',
-    borderY : 510,
-    borderWidth: 35
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/platformscene52.png',
+    borderY : 1,
+    borderWidth : 38
 }), new Sprite({
     position: {
         x: 350,
         y: 400
     },
-    width: 45,
-    height: 32,
-    imgSrc: './img/Background/cloudsmallscene5.png',
-    borderY : 410,
-    borderWidth: 35
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/platformscene52.png',
+    borderY : 1,
+    borderWidth: 38
 }), new Sprite({
     position: {
         x: 100,
@@ -325,7 +314,7 @@ const platformsScene5 = [new Sprite({
     width: 48,
     height: 55,
     imgSrc: './img/Background/platformscene5.png',
-    borderY : 310,
+    borderY : 1,
     borderWidth: 38
 }), new Sprite({
     position: {
@@ -335,7 +324,7 @@ const platformsScene5 = [new Sprite({
     width: 48,
     height: 55,
     imgSrc: './img/Background/platformscene5.png',
-    borderY : 110,
+    borderY : 1,
     borderWidth: 38
 })]
 
@@ -354,51 +343,51 @@ const platformsScene6 = [new Sprite({
         x: 30,
         y: 550
     },
-    width: 74,
-    height: 37,
-    imgSrc: './img/Background/newcloud.png',
-    borderY : 565,
-    borderWidth : 64
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/scene6rock1png.png',
+    borderY : 1,
+    borderWidth : 38
 }), new Sprite({
     position: {
         x: 220,
         y: 500
     },
-    width: 45,
-    height: 32,
-    imgSrc: './img/Background/cloudsmall.png',
-    borderY : 510,
-    borderWidth: 35
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/scene6rock1png.png',
+    borderY : 1,
+    borderWidth : 38
 }), new Sprite({
     position: {
         x: 350,
         y: 400
     },
-    width: 45,
-    height: 32,
-    imgSrc: './img/Background/cloudsmall.png',
-    borderY : 410,
-    borderWidth: 35
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/scene6rock1png.png',
+    borderY : 1,
+    borderWidth : 38
 }), new Sprite({
     position: {
         x: 100,
         y: 300
     },
-    width: 45,
-    height: 32,
-    imgSrc: './img/Background/cloudsmall.png',
-    borderY : 310,
-    borderWidth: 35
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/scene6rock1png.png',
+    borderY : 1,
+    borderWidth : 38
 }), new Sprite({
     position: {
         x: 230,
         y: 100
     },
-    width: 122,
-    height: 47,
-    imgSrc: './img/Background/newcloud2.png',
-    borderY : 110,
-    borderWidth: 105
+    width: 48,
+    height: 48,
+    imgSrc: './img/Background/scene6rock1png.png',
+    borderY : 1,
+    borderWidth : 38
 })]
 
 
@@ -420,12 +409,12 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene1;
+let currentScene = scene5;
 
 //Instance of player
 const player = new Character({
     position: {
-    x: 80,
+    x: 60,
     y: 300},
     velocity: {
     x: 0,

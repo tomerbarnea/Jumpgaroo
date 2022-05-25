@@ -40,6 +40,7 @@ function sceneHandler(){
                 break
             case scene5: 
                 currentScene = scene6
+                gravity = 0.4
                 player.position.y = canvas.height
                 switchingScene = true;
                 setTimeout(() => { switchingScene = false;

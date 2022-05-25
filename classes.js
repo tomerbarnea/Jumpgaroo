@@ -112,6 +112,7 @@ class Character{
                     switch(currentScene){
                         case scene6: 
                             currentScene = scene5
+                            gravity = 0.7
                             player.position.y = 0
                             switchingScene = true;
                             setTimeout(() => { switchingScene = false;
