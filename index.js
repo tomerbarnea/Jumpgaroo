@@ -5,7 +5,6 @@ canvas.width = 480;
 canvas.height = 720; 
 c.fillRect(0, 0, canvas.width, canvas.height);
 
-console.log('yo')
 
 //global variables
 let lastJump = Date.now();
