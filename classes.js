@@ -63,7 +63,7 @@ class Character{
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
         //detect canvas walls collide and bounce off
-        if(this.position.x + this.width >= canvas.width || this.position.x <= canvas.width - canvas.width){
+        if(this.position.x + this.width + 1 >= canvas.width || this.position.x - 1 <= canvas.width - canvas.width){
             this.velocity.x *= -1
             playAudioOnce('wallSfx')
             switch(player.currentSprite){
@@ -74,6 +74,11 @@ class Character{
                     player.currentSprite = player.sprites.idle.right
                     break
             }
+        }
+        if(this.position.x + this.width + 1 === canvas.width){
+            this.velocity.x--
+        }else if(this.position.x - 1 <= canvas.width - canvas.width){
+            this.velocity.x++
         }
         //detect specific platform walls and bounce off thier x
         currentScene.platformsSprite.forEach(platform => {
