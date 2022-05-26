@@ -2,6 +2,14 @@
 const canvas = document.createElement('canvas')
 const c = canvas.getContext('2d');
 
+const music23 = new Audio('./audio/scene23music.wav')
+music23.loop = true
+const music4 = new Audio('./audio/scene4music.wav')
+music4.loop = true
+const music5 = new Audio('./audio/scene5music.wav')
+music5.loop = true
+//music.loop = true
+
 canvas.width = 480;
 canvas.height = 720; 
 c.fillRect(0, 0, canvas.width, canvas.height);
@@ -410,13 +418,13 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene5;
+let currentScene = scene1;
 
 //Instance of player
 const player = new Character({
     position: {
     x: 60,
-    y: 300},
+    y: 290},
     velocity: {
     x: 0,
     y: 0
@@ -639,6 +647,12 @@ function keyHandlerFunc(){
         keyUp = 'a'
     }
 }
+
+/*
+music.addEventListener('ended', () => {
+    music.currentTime = 0
+    music.play();
+},false)*/
 
 function startGame(){
     const menu = document.getElementById('main-menu')
