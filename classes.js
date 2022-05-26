@@ -117,6 +117,9 @@ class Character{
                     switch(currentScene){
                         case scene6: 
                             currentScene = scene5
+                            //music5.currentTime = 0 
+                            //music5.play()
+                            playFade(music5)
                             gravity = 0.7
                             player.position.y = 0
                             switchingScene = true;
@@ -127,6 +130,11 @@ class Character{
                         case scene5: 
                         currentScene = scene4
                             player.position.y = 0
+                            //music5.pause()
+                            //music4.currentTime = 0 
+                            //music4.play()
+                            stopFade(music5)
+                            playFade(music4)
                             switchingScene = true;
                             setTimeout(() => { switchingScene = false;
                                 
@@ -135,6 +143,9 @@ class Character{
                             break
                         case scene4: 
                             currentScene = scene3
+                            //music4.pause()
+                            stopFade(music4)
+                            playFade(music23)
                             player.position.y = 0
                             switchingScene = true;
                             setTimeout(() => { switchingScene = false;
@@ -153,6 +164,7 @@ class Character{
                             break
                         case scene2: 
                             currentScene = scene1
+                            stopFade(music23)
                             player.position.y = 0
                             switchingScene = true;
                             setTimeout(() => { switchingScene = false;
@@ -268,11 +280,35 @@ const audioHandler = {}
 
 function playAudioOnce(audio){
     if(!audioHandler[audio]){
-        const newAudio = new Audio(`./audio/${audio}.mp3`)
+        const newAudio = new Audio(`./audio/${audio}.wav`)
         audioHandler[audio] = newAudio
     }
 
     audioHandler[audio].pause()
     audioHandler[audio].currentTime = 0
     audioHandler[audio].play()
+}
+
+function playFade(audio){
+    audio.volume = 0
+    audio.play()
+    setTimeout(() => audio.volume = 0.2 , 20)
+    setTimeout(() => audio.volume = 0.4 , 40)
+    setTimeout(() => audio.volume = 0.6 , 60)
+    setTimeout(() => audio.volume = 0.8 , 80)
+    setTimeout(() => audio.volume = 1 , 100)
+
+}
+
+function stopFade(audio){
+    setTimeout(() => audio.volume = 0.8 , 30)
+    setTimeout(() => audio.volume = 0.6 , 60)
+    setTimeout(() => audio.volume = 0.4 , 90)
+    setTimeout(() => audio.volume = 0.2 , 120)
+    setTimeout(() => audio.volume = 0 , 150)
+    setTimeout(() => {
+        audio.pause()
+        audio.currentTime = 0
+    }, 180)
+
 }
