@@ -1,4 +1,5 @@
-const canvas = document.querySelector('canvas');
+//const canvas = document.querySelector('canvas');
+const canvas = document.createElement('canvas')
 const c = canvas.getContext('2d');
 
 canvas.width = 480;
@@ -637,4 +638,11 @@ function keyHandlerFunc(){
     if(keyReleased[65]){
         keyUp = 'a'
     }
+}
+
+function startGame(){
+    const menu = document.getElementById('main-menu')
+    menu.remove()
+    const container = document.getElementById('canvas-container')
+    container.prepend(canvas)
 }
