@@ -83,8 +83,8 @@ class Character{
         //detect specific platform walls and bounce off thier x
         currentScene.platformsSprite.forEach(platform => {
             if(platform.collider.isWall){
-                if(!(player.position.x + player.width + player.velocity.x <= platform.collider.position.x 
-                    || player.position.x + player.velocity.x >= platform.collider.position.x + platform.collider.width)){
+                if(!(player.position.x + player.width + player.velocity.x <= platform.collider.position.x - 1
+                    || player.position.x + player.velocity.x >= platform.collider.position.x + platform.collider.width + 1)){
                         if(player.position.y <= platform.position.y + platform.height
                             && player.position.y + player.height >= platform.position.y){
                             this.velocity.x *= -1
