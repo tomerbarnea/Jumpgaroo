@@ -190,7 +190,7 @@ const platformsScene3 = [new Sprite({
     borderWidth: 38
 }),new Sprite({
     position: {
-        x: 305,
+        x: 250,
         y: 150
     },
     width: 74,
@@ -236,32 +236,22 @@ const backgroundScene4 = new Sprite({
 const platformsScene4 = [new Sprite({
     position: {
         x: 30,
-        y: 550
+        y: 610
     },
     width: 74,
     height: 37,
     imgSrc: './img/Background/newcloud.png',
-    borderY : 565,
+    borderY : 625,
     borderWidth : 64
 }), new Sprite({
     position: {
         x: 220,
-        y: 500
+        y: 550
     },
     width: 45,
     height: 32,
     imgSrc: './img/Background/cloudsmall.png',
-    borderY : 510,
-    borderWidth: 35
-}), new Sprite({
-    position: {
-        x: 350,
-        y: 400
-    },
-    width: 45,
-    height: 32,
-    imgSrc: './img/Background/cloudsmall.png',
-    borderY : 410,
+    borderY : 560,
     borderWidth: 35
 }), new Sprite({
     position: {
@@ -278,11 +268,33 @@ const platformsScene4 = [new Sprite({
         x: 230,
         y: 100
     },
-    width: 122,
-    height: 47,
-    imgSrc: './img/Background/newcloud2.png',
+    width: 74,
+    height: 37,
+    imgSrc: './img/Background/newcloud.png',
     borderY : 110,
-    borderWidth: 105
+    borderWidth: 64
+}),new Sprite({
+    position: {
+        x: 345,
+        y: -10
+    },
+    width: 30,
+    height: 294,
+    imgSrc: './img/Background/highwallscene52.png',
+    borderY : 1,
+    borderWidth: 28,
+    isWall: true
+}),new Sprite({
+    position: {
+        x: 345,
+        y: 480
+    },
+    width: 30,
+    height: 294,
+    imgSrc: './img/Background/highwallscene52.png',
+    borderY : 1,
+    borderWidth: 30,
+    isWall: true
 })]
 
 const backgroundScene5 = new Sprite({
@@ -297,8 +309,8 @@ const backgroundScene5 = new Sprite({
 
 const platformsScene5 = [new Sprite({
     position: {
-        x: 30,
-        y: 550
+        x: 250,
+        y: 600
     },
     width: 48,
     height: 48,
@@ -310,31 +322,42 @@ const platformsScene5 = [new Sprite({
         x: 350,
         y: 400
     },
-    width: 48,
-    height: 48,
-    imgSrc: './img/Background/platformscene52.png',
+    width: 38,
+    height: 45,
+    imgSrc: './img/Background/platformscene523.png',
     borderY : 1,
-    borderWidth: 38
+    borderWidth: 28
 }), new Sprite({
     position: {
-        x: 100,
-        y: 300
+        x: 80,
+        y: 210
     },
-    width: 48,
-    height: 55,
-    imgSrc: './img/Background/platformscene5.png',
+    width: 38,
+    height: 45,
+    imgSrc: './img/Background/platformscene523.png',
     borderY : 1,
-    borderWidth: 38
+    borderWidth: 28
 }), new Sprite({
     position: {
         x: 230,
         y: 100
     },
     width: 48,
-    height: 55,
-    imgSrc: './img/Background/platformscene5.png',
+    height: 48,
+    imgSrc: './img/Background/platformscene52.png',
     borderY : 1,
     borderWidth: 38
+}),new Sprite({
+    position: {
+        x: 230,
+        y: 250
+    },
+    width: 30,
+    height: 224,
+    imgSrc: './img/Background/highwallscene5.png',
+    borderY : 1,
+    borderWidth: 28,
+    isWall: true
 })]
 
 const backgroundScene6 = new Sprite({
@@ -418,13 +441,13 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene1;
+let currentScene = scene5;
 
 //Instance of player
 const player = new Character({
     position: {
-    x: 60,
-    y: 290},
+    x: 200,
+    y: 500},
     velocity: {
     x: 0,
     y: 0

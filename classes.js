@@ -175,7 +175,7 @@ class Character{
                     }
                 }
             } else {
-                if(player.velocity.y <= 17){  
+                if(player.velocity.y <= 15){  
                     this.velocity.y += gravity;}
                 //this.velocity.x += force;
                 this.isGrounded = false;
