@@ -431,7 +431,6 @@ backgroundScene3.collider.isActive = false
 backgroundScene4.collider.isActive = false
 backgroundScene5.collider.isActive = false
 backgroundScene6.collider.isActive = false
-//platformsScene3[4].collider.isActive = false
 
 //creating scene 1 and attaching a background and its platforms to it 
 const scene1 = new Scene(background,platforms)
@@ -455,8 +454,6 @@ const player = new Character({
     },
     width: 50,
     height: 71
-
-
 })
 
 //data for key presses
@@ -485,14 +482,13 @@ function animate(){
     currentScene.update();
     //update the player 
     player.update();
+    //handles scene changing 
     sceneHandler();
-    //console.log(jumpGauge)
     //check if jump is at max gauge if true jump 
     if(jumpGauge >= jumpMaxGauge){
         console.log('max gauge')
         player.isJumping = true;
         jumpGauge = jumpMaxGauge;
-        //if(keys.a.pressed && lastKey === 'a'){
         if(keyPressed[65] && lastKey === 'a'){
             player.currentSprite = player.sprites.idle.left
             playAudioOnce('jumpSfx')
@@ -505,7 +501,6 @@ function animate(){
             player.isOnPlatform = false
             lastJump = Date.now();
             keyReleased[87] = false
-        //} else if (keys.d.pressed && lastKey === 'd'){
         } else if (keyPressed[68] && lastKey === 'd'){
             player.currentSprite = player.sprites.idle.right
             //jumpSfx.play()
@@ -597,45 +592,18 @@ function animate(){
 }
 
 
-
 animate();
 
 
 //Handle the players input when pressing down a key
 window.addEventListener('keydown', (event) => {
     keyPressed[event.keyCode || event.which] = true;
-    /*
-    switch (event.key){
-        case 'w':
-            if(!player.isJumping){
-                keys.w.pressed = true;
-                if(jumpGauge <= jumpMaxGauge && (player.isGrounded || player.isOnPlatform)){
-                    jumpGauge += 110
-                    break
-                }
-                break
-           }
-           default : {
-            jumpGauge = 0
-           }
-    }
-    */
 })
 
 //Handle the players input when leaving a key
 window.addEventListener('keyup', (event) => {
     keyPressed[event.keyCode || event.which] = false;
     keyReleased[event.keyCode || event.which] = true;
-
-    /*
-    switch (event.key){
-        case 'w':
-            keys.w.pressed = false;
-            keys.w.released = true;
-            player.isJumping = true
-            break
-    }
-    */
 })
 
 function keyHandlerFunc(){
@@ -653,7 +621,6 @@ function keyHandlerFunc(){
     }
     // w release check
     if(keyReleased[87]){
-        //jumpSfx.play()
         player.isJumping = true
     }
     // d press check
@@ -674,13 +641,6 @@ function keyHandlerFunc(){
     }
 }
 
-/*
-music.addEventListener('ended', () => {
-    music.currentTime = 0
-    music.play();
-},false)*/
-
-
 const menu2 = document.getElementById('main-menu')
 function startGame(){
     const menu = document.getElementById('main-menu')
@@ -694,7 +654,5 @@ function endGame(){
     const container = document.getElementById('canvas-container')
     container.prepend(menu2)
     currentScene = scene1
-    player.position.x = 100
-    player.position.y = 300
 }
 

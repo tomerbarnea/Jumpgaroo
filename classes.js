@@ -1,7 +1,6 @@
 class Character{
     constructor({position, velocity, width, height, scale = 1,frameMax = 1}){
         this.img = new Image(width, height)
-        //this.img.src = imgSrc
         this.position = position
         this.velocity = velocity
         this.height = height
@@ -46,19 +45,6 @@ class Character{
             this.position.y,
             (this.img.width / this.frameMax) * this.scale,
             this.img.height)
-        //collider
-        c.fillStyle = 'red'
-        
-        /*  
-        c.fillRect(
-            this.currentSprite === this.sprites.idle.right ? this.colliderBox.position.x + 19 : this.colliderBox.position.x + 5,
-            this.colliderBox.position.y,
-            this.colliderBox.width,
-            this.colliderBox.height)
-            */
-            
-        
-
     }
     //handle specific instance updating for player
     update(){
@@ -95,7 +81,6 @@ class Character{
                     && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width - 1){
                         if(player.isOnPlatform === false){
                                 playAudioOnce('landSfx')
-                                //console.log('wall collider')
                         }
                         player.isOnPlatform = true;
                         player.isJumping = false;
@@ -111,9 +96,8 @@ class Character{
                     if(this.isShovedY === false && this.isShovedX === true){
                         player.velocity.y *= -1
                         playAudioOnce('wallSfx')
-                        //console.log('wall shove')
                         this.isShovedY = true
-                        setTimeout(() => this.isShovedY = false, 500)
+                        setTimeout(() => this.isShovedY = false, 100)
                     }
                 }
         }
@@ -128,7 +112,6 @@ class Character{
                             if(this.isShovedX === false){
                                 this.velocity.x *= -1
                                 playAudioOnce('wallSfx')
-                                //console.log('platfrom shove')
                                 switch(player.currentSprite){
                                     case player.sprites.idle.right:
                                         player.currentSprite = player.sprites.idle.left
@@ -138,7 +121,7 @@ class Character{
                                         break
                                 }
                                 this.isShovedX = true
-                                setTimeout(() => this.isShovedX = false, 500)
+                                setTimeout(() => this.isShovedX = false, 100)
                             }
                         }
                 }
@@ -152,7 +135,6 @@ class Character{
                     if(player.isGrounded === false){
                         playAudioOnce('landSfx')
                         this.isGrounded = true;
-                        //this.isJumping = false;
                     }
                     this.velocity.y = 0;
                     this.velocity.x = 0;
@@ -160,8 +142,6 @@ class Character{
                     switch(currentScene){
                         case scene6: 
                             currentScene = scene5
-                            //music5.currentTime = 0 
-                            //music5.play()
                             playFade(music5)
                             gravity = 0.7
                             player.position.y = 0
@@ -173,9 +153,6 @@ class Character{
                         case scene5: 
                         currentScene = scene4
                             player.position.y = 0
-                            //music5.pause()
-                            //music4.currentTime = 0 
-                            //music4.play()
                             stopFade(music5)
                             playFade(music4)
                             switchingScene = true;
@@ -220,7 +197,6 @@ class Character{
             } else {
                 if(player.velocity.y <= 15){  
                     this.velocity.y += gravity;}
-                //this.velocity.x += force;
                 this.isGrounded = false;
             }
          }

@@ -23,7 +23,6 @@ function sceneHandler(){
                 break
             case scene3: 
                 currentScene = scene4
-                //music4.play();
                 stopFade(music23)
                 playFade(music4)
                 player.position.y = canvas.height
@@ -35,8 +34,6 @@ function sceneHandler(){
                 break
             case scene4: 
                 currentScene = scene5
-                //music4.pause()
-                //music4.currentTime = 0
                 stopFade(music4)
                 playFade(music5)
                 player.position.y = canvas.height
@@ -48,8 +45,6 @@ function sceneHandler(){
                 break
             case scene5: 
                 currentScene = scene6
-                //music5.pause()
-                //music5.currentTime = 0
                 stopFade(music5)
                 gravity = 0.43
                 player.position.y = canvas.height
@@ -62,6 +57,8 @@ function sceneHandler(){
                 console.log(currentScene)
                 break
             case scene6:
+                player.position.x = 100
+                player.position.y = 300
                 endGame();
         }
     }
