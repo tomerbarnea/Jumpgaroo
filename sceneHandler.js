@@ -51,14 +51,18 @@ function sceneHandler(){
                 //music5.pause()
                 //music5.currentTime = 0
                 stopFade(music5)
-                gravity = 0.4
+                gravity = 0.43
                 player.position.y = canvas.height
+                player.velocity.y /= 1.6
+                player.velocity.x /= 1.3
                 switchingScene = true;
                 setTimeout(() => { switchingScene = false;
                     
                 }, 100);
                 console.log(currentScene)
                 break
+            case scene6:
+                endGame();
         }
     }
 }

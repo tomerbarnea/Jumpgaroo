@@ -383,18 +383,8 @@ const backgroundScene6 = new Sprite({
 
 const platformsScene6 = [new Sprite({
     position: {
-        x: 30,
+        x: 60,
         y: 550
-    },
-    width: 48,
-    height: 48,
-    imgSrc: './img/Background/scene6rock1png.png',
-    borderY : 1,
-    borderWidth : 38
-}), new Sprite({
-    position: {
-        x: 220,
-        y: 500
     },
     width: 48,
     height: 48,
@@ -452,13 +442,13 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene5;
+let currentScene = scene1;
 
 //Instance of player
 const player = new Character({
     position: {
-    x: 200,
-    y: 1},
+    x: 100,
+    y: 300},
     velocity: {
     x: 0,
     y: 0
@@ -505,14 +495,15 @@ function animate(){
         //if(keys.a.pressed && lastKey === 'a'){
         if(keyPressed[65] && lastKey === 'a'){
             player.currentSprite = player.sprites.idle.left
-            //jumpSfx.play()
             playAudioOnce('jumpSfx')
             player.velocity.x = -4 - (jumpGauge/550)
             player.velocity.y = -3 - (jumpGauge/100)
+            if(currentScene === scene6){
+                player.velocity.y /= 1.6
+                player.velocity.x /= 1.3
+            }
             player.isOnPlatform = false
-            //jumpGauge = 0;
             lastJump = Date.now();
-            //keys.w.released = false
             keyReleased[87] = false
         //} else if (keys.d.pressed && lastKey === 'd'){
         } else if (keyPressed[68] && lastKey === 'd'){
@@ -521,21 +512,22 @@ function animate(){
             playAudioOnce('jumpSfx')
             player.velocity.x = 4 + (jumpGauge/550)
             player.velocity.y = -3 - (jumpGauge/100)
+            if(currentScene === scene6){
+                player.velocity.y /= 1.6
+                player.velocity.x /= 1.3
+            }
             player.isOnPlatform = false
-            //jumpGauge = 0;
             lastJump = Date.now();
-            //keys.w.released = false
             keyReleased[87] = false
         }else{
-            //jumpSfx.play()
             playAudioOnce('jumpSfx')
             player.velocity.y = -3 - (jumpGauge/100)
+            if(currentScene === scene6){
+                player.velocity.y /= 1.6
+            }
             player.isOnPlatform = false
-            
             lastJump = Date.now();
-            //keys.w.released = false
             keyReleased[87] = false
-            //jumpGauge = 0;
         }
     jumpGauge = 0
     //check jump input and jump if conditions are met with current jumpGauge
@@ -546,6 +538,10 @@ function animate(){
                 playAudioOnce('jumpSfx')
                 player.velocity.x = -4 - (jumpGauge/550)
                 player.velocity.y = -3 - (jumpGauge/100)
+                if(currentScene === scene6){
+                        player.velocity.y /= 1.6
+                        player.velocity.x /= 1.3
+                }
                 player.isJumping = true;
                 player.isOnPlatform = false
                 lastJump = Date.now();
@@ -555,6 +551,10 @@ function animate(){
                 playAudioOnce('jumpSfx')
                 player.velocity.x = 4 + (jumpGauge/550)
                 player.velocity.y = -3 - (jumpGauge/100)
+                if(currentScene === scene6){
+                    player.velocity.y /= 1.6
+                    player.velocity.x /= 1.3
+                }
                 player.isJumping = true;
                 player.isOnPlatform = false
                 lastJump = Date.now();
@@ -562,6 +562,9 @@ function animate(){
             }else{
                 playAudioOnce('jumpSfx')
                 player.velocity.y = -3 - (jumpGauge/100)
+                if(currentScene === scene6){
+                    player.velocity.y /= 1.6
+                }
                 player.isJumping = true;
                 player.isOnPlatform = false
                 lastJump = Date.now();
@@ -677,9 +680,21 @@ music.addEventListener('ended', () => {
     music.play();
 },false)*/
 
+
+const menu2 = document.getElementById('main-menu')
 function startGame(){
     const menu = document.getElementById('main-menu')
     menu.remove()
     const container = document.getElementById('canvas-container')
     container.prepend(canvas)
 }
+
+function endGame(){
+    canvas.remove();
+    const container = document.getElementById('canvas-container')
+    container.prepend(menu2)
+    currentScene = scene1
+    player.position.x = 100
+    player.position.y = 300
+}
+
