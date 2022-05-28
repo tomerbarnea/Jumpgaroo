@@ -207,7 +207,7 @@ const platformsScene3 = [new Sprite({
     height: 171,
     imgSrc: './img/Background/highwall.png',
     borderY : 1,
-    borderWidth: 28,
+    borderWidth: 30,
     isWall: true
 }),new Sprite({
     position: {
@@ -218,7 +218,7 @@ const platformsScene3 = [new Sprite({
     height: 171,
     imgSrc: './img/Background/highwall.png',
     borderY : 1,
-    borderWidth: 28,
+    borderWidth: 30,
     isWall: true
 })]
 
@@ -282,7 +282,7 @@ const platformsScene4 = [new Sprite({
     height: 294,
     imgSrc: './img/Background/highwallscene52.png',
     borderY : 1,
-    borderWidth: 28,
+    borderWidth: 30,
     isWall: true
 }),new Sprite({
     position: {
@@ -329,6 +329,16 @@ const platformsScene5 = [new Sprite({
     borderWidth: 28
 }), new Sprite({
     position: {
+        x: 350,
+        y: 300
+    },
+    width: 38,
+    height: 45,
+    imgSrc: './img/Background/platformscene523.png',
+    borderY : 1,
+    borderWidth: 28
+}), new Sprite({
+    position: {
         x: 80,
         y: 210
     },
@@ -340,13 +350,14 @@ const platformsScene5 = [new Sprite({
 }), new Sprite({
     position: {
         x: 230,
-        y: 100
+        y: 80
     },
-    width: 48,
-    height: 48,
-    imgSrc: './img/Background/platformscene52.png',
+    width: 258,
+    height: 55,
+    imgSrc: './img/Background/platformscene5groundwall.png',
     borderY : 1,
-    borderWidth: 38
+    borderWidth: 1,
+    isWall: true
 }),new Sprite({
     position: {
         x: 230,
@@ -447,7 +458,7 @@ let currentScene = scene5;
 const player = new Character({
     position: {
     x: 200,
-    y: 500},
+    y: 1},
     velocity: {
     x: 0,
     y: 0
@@ -566,9 +577,10 @@ function animate(){
             if(player.colliderBox.position.y + player.colliderBox.height <= platform.collider.position.y 
                 && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
                 && player.colliderBox.position.x + player.colliderBox.width >= platform.collider.position.x - 5
-                && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width){
+                && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width - 1){
                     if(player.isOnPlatform === false){
                             playAudioOnce('landSfx')
+                            console.log('wall collider')
                     }
                     player.isOnPlatform = true;
                     player.isJumping = false;
@@ -576,18 +588,6 @@ function animate(){
                     player.velocity.y = 0;
                     player.velocity.x = 0;
             }
-        }
-    })
-    
-    currentScene.platformsSprite.forEach(platform => {
-        if(platform.collider.isWall){
-            if(player.position.y <= platform.position.y + platform.height
-                && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
-                && player.colliderBox.position.x + player.colliderBox.width >= platform.collider.position.x - 5
-                && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width){
-                    player.velocity.y *= -1
-                    playAudioOnce('wallSfx')
-                }
         }
     })
     keyHandlerFunc()
