@@ -646,6 +646,7 @@ function startGame(){
     const menu = document.getElementById('main-menu')
     menu.remove()
     const container = document.getElementById('canvas-container')
+    playAudioOnce('landSfx')
     container.prepend(canvas)
 }
 
