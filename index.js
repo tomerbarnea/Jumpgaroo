@@ -41,7 +41,7 @@ const platforms = [new Sprite({
     height: 42,
     imgSrc: './img/Background/platform1.png',
     borderY: 1,
-    borderWidth: 90
+    borderWidth: 1
 
 }), new Sprite({
     position: {
@@ -52,7 +52,7 @@ const platforms = [new Sprite({
     height: 53,
     imgSrc: './img/Background/sideplatform.png',
     borderY: 1,
-    borderWidth: 195
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 200,
@@ -62,7 +62,7 @@ const platforms = [new Sprite({
     height: 53,
     imgSrc: './img/Background/groundsmall.png',
     borderY: 1,
-    borderWidth: 95
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 190,
@@ -72,7 +72,7 @@ const platforms = [new Sprite({
     height: 53,
     imgSrc: './img/Background/groundsmall.png',
     borderY: 1,
-    borderWidth: 95
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 00,
@@ -82,7 +82,7 @@ const platforms = [new Sprite({
     height: 47,
     imgSrc: './img/Background/scene1ground.png',
     borderY: 1,
-    borderWidth: 470
+    borderWidth: 1
 })]
 
 const backgroundScene2 = new Sprite({
@@ -104,7 +104,7 @@ const platformsScene2 = [ new Sprite({
     height: 53,
     imgSrc: './img/Background/groundsmall.png',
     borderY: 1,
-    borderWidth: 95
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 185,
@@ -114,7 +114,7 @@ const platformsScene2 = [ new Sprite({
     height: 53,
     imgSrc: './img/Background/groundsmall.png',
     borderY: 1,
-    borderWidth: 95
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 290,
@@ -124,7 +124,7 @@ const platformsScene2 = [ new Sprite({
     height: 53,
     imgSrc: './img/Background/groundsmall.png',
     borderY: 1,
-    borderWidth: 105
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 0,
@@ -134,7 +134,7 @@ const platformsScene2 = [ new Sprite({
     height: 42,
     imgSrc: './img/Background/platform1.png',
     borderY: 1,
-    borderWidth: 90
+    borderWidth: 1
 }),new Sprite({
     position: {
         x: 280,
@@ -144,7 +144,7 @@ const platformsScene2 = [ new Sprite({
     height: 171,
     imgSrc: './img/Background/highwallnormal.png',
     borderY : 1,
-    borderWidth: 28,
+    borderWidth: 1,
     isWall: true
 })]
 
@@ -167,17 +167,17 @@ const platformsScene3 = [new Sprite({
     height: 55,
     imgSrc: './img/Background/platform2redt.png',
     borderY : 1,
-    borderWidth : 38
+    borderWidth : 1
 }),new Sprite({
     position: {
-        x: 370,
-        y: 620
+        x: 385,
+        y: 630
     },
     width: 48,
     height: 55,
     imgSrc: './img/Background/platform2redt.png',
     borderY: 1,
-    borderWidth: 38
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 30,
@@ -187,7 +187,7 @@ const platformsScene3 = [new Sprite({
     height: 55,
     imgSrc: './img/Background/platform2redt.png',
     borderY: 1,
-    borderWidth: 38
+    borderWidth: 1
 }),new Sprite({
     position: {
         x: 250,
@@ -197,7 +197,7 @@ const platformsScene3 = [new Sprite({
     height: 37,
     imgSrc: './img/Background/newcloud.png',
     borderY : 160,
-    borderWidth: 64
+    borderWidth: 1
 }),new Sprite({
     position: {
         x: 305,
@@ -207,18 +207,18 @@ const platformsScene3 = [new Sprite({
     height: 171,
     imgSrc: './img/Background/highwall.png',
     borderY : 1,
-    borderWidth: 30,
+    borderWidth: 1,
     isWall: true
 }),new Sprite({
     position: {
-        x: 280,
+        x: 305,
         y: 638
     },
     width: 30,
     height: 171,
     imgSrc: './img/Background/highwall.png',
     borderY : 1,
-    borderWidth: 30,
+    borderWidth: 1,
     isWall: true
 })]
 
@@ -242,7 +242,7 @@ const platformsScene4 = [new Sprite({
     height: 37,
     imgSrc: './img/Background/newcloud.png',
     borderY : 625,
-    borderWidth : 64
+    borderWidth : 1
 }), new Sprite({
     position: {
         x: 220,
@@ -252,7 +252,7 @@ const platformsScene4 = [new Sprite({
     height: 32,
     imgSrc: './img/Background/cloudsmall.png',
     borderY : 560,
-    borderWidth: 35
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 100,
@@ -262,7 +262,7 @@ const platformsScene4 = [new Sprite({
     height: 32,
     imgSrc: './img/Background/cloudsmall.png',
     borderY : 310,
-    borderWidth: 35
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 230,
@@ -272,7 +272,7 @@ const platformsScene4 = [new Sprite({
     height: 37,
     imgSrc: './img/Background/newcloud.png',
     borderY : 110,
-    borderWidth: 64
+    borderWidth: 1
 }),new Sprite({
     position: {
         x: 345,
@@ -282,7 +282,7 @@ const platformsScene4 = [new Sprite({
     height: 294,
     imgSrc: './img/Background/highwallscene52.png',
     borderY : 1,
-    borderWidth: 30,
+    borderWidth: 1,
     isWall: true
 }),new Sprite({
     position: {
@@ -293,7 +293,7 @@ const platformsScene4 = [new Sprite({
     height: 294,
     imgSrc: './img/Background/highwallscene52.png',
     borderY : 1,
-    borderWidth: 30,
+    borderWidth: 1,
     isWall: true
 })]
 
@@ -488,6 +488,7 @@ function animate(){
     if(jumpGauge >= jumpMaxGauge){
         console.log('max gauge')
         player.isJumping = true;
+        player.chargeBar.tick.width = 3.7
         jumpGauge = jumpMaxGauge;
         if(keyPressed[65] && lastKey === 'a'){
             player.currentSprite = player.sprites.idle.left
@@ -528,6 +529,7 @@ function animate(){
     //check jump input and jump if conditions are met with current jumpGauge
     } else if(keyReleased[87]){
         if(player.isGrounded || player.isOnPlatform){
+            player.chargeBar.tick.width = 3.7
             if(keyPressed[65] && lastKey === 'a'){
                 player.currentSprite = player.sprites.idle.left
                 playAudioOnce('jumpSfx')
@@ -574,8 +576,8 @@ function animate(){
         if(platform.collider.isActive){
             if(player.colliderBox.position.y + player.colliderBox.height <= platform.collider.position.y 
                 && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
-                && player.colliderBox.position.x + player.colliderBox.width >= platform.collider.position.x - 5
-                && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width - 1){
+                && checkColliderSide() + player.colliderBox.width >= platform.collider.position.x - 5
+                && checkColliderSide() <= platform.collider.position.x + platform.collider.width - 1){
                     if(player.isOnPlatform === false){
                             playAudioOnce('landSfx')
                             console.log('wall collider')
