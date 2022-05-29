@@ -23,10 +23,20 @@ class Character{
 
         this.colliderBox = {
             position: this.position,
-            width: 28,
+            width: 30,
             height: this.height
         },
-
+        
+        this.chargeBar = {
+            position: this.colliderBox.position,
+            width: 53,
+            height: 10,
+            tick : {
+                width: 3.7,
+                height: 8
+            }
+        },
+        
 
         this.isJumping = true,
         this.canJump = false
@@ -45,6 +55,28 @@ class Character{
             this.position.y,
             (this.img.width / this.frameMax) * this.scale,
             this.img.height)
+
+        /*
+        c.fillStyle = 'red'
+        c.fillRect(checkColliderSide() , this.colliderBox.position.y , this.colliderBox.width ,this.colliderBox.height )
+        */
+        
+        if(keyPressed[87] && !this.isJumping){
+
+            c.fillStyle = '#433732'
+            c.fillRect(this.currentSprite === this.sprites.idle.right ? this.position.x : this.position.x - 10,
+            this.chargeBar.position.y - 20,
+            this.chargeBar.width,
+            this.chargeBar.height)
+
+            c.fillStyle = '#EAA141'
+            c.fillRect(this.currentSprite === this.sprites.idle.right ? this.position.x : this.position.x - 9,
+            this.chargeBar.position.y - 19,
+            this.chargeBar.tick.width,
+            this.chargeBar.tick.height)
+
+            this.chargeBar.tick.width += 0.9
+        }
     }
     //handle specific instance updating for player
     update(){
@@ -77,8 +109,8 @@ class Character{
             if(platform.collider.isActive){
                 if(player.colliderBox.position.y + player.colliderBox.height <= platform.collider.position.y 
                     && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
-                    && player.colliderBox.position.x + player.colliderBox.width >= platform.collider.position.x - 5
-                    && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width - 1){
+                    && checkColliderSide() + player.colliderBox.width >= platform.collider.position.x - 5
+                    && checkColliderSide() <= platform.collider.position.x + platform.collider.width - 1){
                         if(player.isOnPlatform === false){
                                 playAudioOnce('landSfx')
                         }
@@ -91,8 +123,8 @@ class Character{
             }
             if(player.position.y <= platform.position.y + platform.height + 1
                 && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y + 2
-                && player.colliderBox.position.x + player.colliderBox.width >= platform.collider.position.x
-                && player.colliderBox.position.x <= platform.collider.position.x + platform.collider.width){
+                && checkColliderSide() + player.colliderBox.width >= platform.collider.position.x
+                && checkColliderSide() <= platform.collider.position.x + platform.collider.width){
                     if(this.isShovedY === false && this.isShovedX === true){
                         player.velocity.y *= -1
                         playAudioOnce('wallSfx')
@@ -150,8 +182,8 @@ class Character{
                             }, 10);
                             console.log(currentScene)
                             break
-                        case scene5: 
-                        currentScene = scene4
+                        case scene5:
+                            currentScene = scene4
                             player.position.y = 0
                             stopFade(music5)
                             playFade(music4)
@@ -330,4 +362,12 @@ function stopFade(audio){
         audio.currentTime = 0
     }, 180)
 
+}
+
+function checkColliderSide(){
+    if(player.currentSprite === player.sprites.idle.right){
+        return (player.colliderBox.position.x + player.width - 28)
+    } else if(player.currentSprite === player.sprites.idle.left){
+        return (player.colliderBox.position.x)
+    }
 }
