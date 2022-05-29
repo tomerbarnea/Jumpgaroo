@@ -316,7 +316,7 @@ const platformsScene5 = [new Sprite({
     height: 48,
     imgSrc: './img/Background/platformscene52.png',
     borderY : 1,
-    borderWidth : 38
+    borderWidth : 1
 }), new Sprite({
     position: {
         x: 350,
@@ -326,7 +326,7 @@ const platformsScene5 = [new Sprite({
     height: 45,
     imgSrc: './img/Background/platformscene523.png',
     borderY : 1,
-    borderWidth: 28
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 350,
@@ -336,7 +336,7 @@ const platformsScene5 = [new Sprite({
     height: 45,
     imgSrc: './img/Background/platformscene523.png',
     borderY : 1,
-    borderWidth: 28
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 80,
@@ -346,7 +346,7 @@ const platformsScene5 = [new Sprite({
     height: 45,
     imgSrc: './img/Background/platformscene523.png',
     borderY : 1,
-    borderWidth: 28
+    borderWidth: 1
 }), new Sprite({
     position: {
         x: 230,
@@ -367,7 +367,7 @@ const platformsScene5 = [new Sprite({
     height: 224,
     imgSrc: './img/Background/highwallscene5.png',
     borderY : 1,
-    borderWidth: 28,
+    borderWidth: 1,
     isWall: true
 })]
 
@@ -390,7 +390,7 @@ const platformsScene6 = [new Sprite({
     height: 48,
     imgSrc: './img/Background/scene6rock1png.png',
     borderY : 1,
-    borderWidth : 38
+    borderWidth : 1
 }), new Sprite({
     position: {
         x: 350,
@@ -400,7 +400,7 @@ const platformsScene6 = [new Sprite({
     height: 48,
     imgSrc: './img/Background/scene6rock1png.png',
     borderY : 1,
-    borderWidth : 38
+    borderWidth : 1
 }), new Sprite({
     position: {
         x: 100,
@@ -410,7 +410,7 @@ const platformsScene6 = [new Sprite({
     height: 48,
     imgSrc: './img/Background/scene6rock1png.png',
     borderY : 1,
-    borderWidth : 38
+    borderWidth : 1
 }), new Sprite({
     position: {
         x: 230,
@@ -420,7 +420,7 @@ const platformsScene6 = [new Sprite({
     height: 48,
     imgSrc: './img/Background/scene6rock1png.png',
     borderY : 1,
-    borderWidth : 38
+    borderWidth : 1
 })]
 
 
@@ -441,12 +441,12 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene1;
+let currentScene = scene6;
 
 //Instance of player
 const player = new Character({
     position: {
-    x: 100,
+    x: 300,
     y: 300},
     velocity: {
     x: 0,
@@ -654,6 +654,7 @@ function startGame(){
 
 function endGame(){
     canvas.remove();
+    delete player
     const container = document.getElementById('canvas-container')
     container.prepend(menu2)
     currentScene = scene1

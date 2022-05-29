@@ -57,8 +57,10 @@ function sceneHandler(){
                 console.log(currentScene)
                 break
             case scene6:
+                gravity = 0.7
                 player.position.x = 100
-                player.position.y = 300
+                player.position.y = 400
+                currentScene = scene1
                 endGame();
         }
     }
