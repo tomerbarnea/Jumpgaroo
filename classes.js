@@ -70,7 +70,7 @@ class Character{
             this.chargeBar.height)
 
             c.fillStyle = '#EAA141'
-            c.fillRect(this.currentSprite === this.sprites.idle.right ? this.position.x : this.position.x - 9,
+            c.fillRect((this.currentSprite === this.sprites.idle.right ? this.position.x : this.position.x - 10) + 1,
             this.chargeBar.position.y - 19,
             this.chargeBar.tick.width,
             this.chargeBar.tick.height)
