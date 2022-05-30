@@ -372,7 +372,7 @@ function stopFade(audio){
 
 function checkColliderSide(){
     if(player.currentSprite === player.sprites.idle.right){
-        return (player.colliderBox.position.x + player.width - 28)
+        return (player.colliderBox.position.x + player.width - 32)
     } else if(player.currentSprite === player.sprites.idle.left){
         return (player.colliderBox.position.x)
     }

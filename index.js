@@ -211,7 +211,7 @@ const platformsScene3 = [new Sprite({
     isWall: true
 }),new Sprite({
     position: {
-        x: 305,
+        x: 280,
         y: 638
     },
     width: 30,
@@ -485,7 +485,7 @@ let keyReleased = {};
 let lastKey;
 let keyUp;
 
-const fps = 90
+const fps = 120
 //Handling the global updating , gets called every frame
 function animate(){
     //calls animate function every window frame
@@ -619,8 +619,27 @@ window.addEventListener('keydown', (event) => {
 
 //Handle the players input when leaving a key
 window.addEventListener('keyup', (event) => {
-    keyPressed[event.keyCode || event.which] = false;
-    keyReleased[event.keyCode || event.which] = true;
+    switch(event.keyCode){
+        case 87:
+            keyPressed[event.keyCode || event.which] = false;
+            keyReleased[event.keyCode || event.which] = true;
+            break
+        case 68:
+            setTimeout(()=>{
+                keyPressed[event.keyCode || event.which] = false;
+                keyReleased[event.keyCode || event.which] = true;
+            },100)
+            break
+        case 65:
+            setTimeout(()=>{
+                keyPressed[event.keyCode || event.which] = false;
+                keyReleased[event.keyCode || event.which] = true;
+            },100)
+
+
+    }
+    //keyPressed[event.keyCode || event.which] = false;
+    //keyReleased[event.keyCode || event.which] = true;
 })
 
 function keyHandlerFunc(){
