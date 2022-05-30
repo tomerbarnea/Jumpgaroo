@@ -452,7 +452,7 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene5;
+let currentScene = scene1;
 
 //Instance of player
 const player = new Character({
