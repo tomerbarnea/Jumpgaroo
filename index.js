@@ -485,77 +485,39 @@ let keyReleased = {};
 let lastKey;
 let keyUp;
 
+const fps = 90
 //Handling the global updating , gets called every frame
 function animate(){
     //calls animate function every window frame
-    window.requestAnimationFrame(animate);
-    //update current scene
-    currentScene.update();
-    //update the player 
-    player.update();
-    //handles scene changing 
-    sceneHandler();
-    //check if jump is at max gauge if true jump 
-    if(jumpGauge >= jumpMaxGauge){
-        console.log('max gauge')
-        player.isJumping = true;
-        player.chargeBar.tick.width = 3.7
-        jumpGauge = jumpMaxGauge;
-        if(keyPressed[65] && lastKey === 'a'){
-            player.currentSprite = player.sprites.idle.left
-            playAudioOnce('jumpSfx')
-            player.velocity.x = -4 - (jumpGauge/550)
-            player.velocity.y = -3 - (jumpGauge/100)
-            if(currentScene === scene6){
-                player.velocity.y /= 1.6
-                player.velocity.x /= 1.3
-            }
-            player.isOnPlatform = false
-            lastJump = Date.now();
-            keyReleased[87] = false
-        } else if (keyPressed[68] && lastKey === 'd'){
-            player.currentSprite = player.sprites.idle.right
-            //jumpSfx.play()
-            playAudioOnce('jumpSfx')
-            player.velocity.x = 4 + (jumpGauge/550)
-            player.velocity.y = -3 - (jumpGauge/100)
-            if(currentScene === scene6){
-                player.velocity.y /= 1.6
-                player.velocity.x /= 1.3
-            }
-            player.isOnPlatform = false
-            lastJump = Date.now();
-            keyReleased[87] = false
-        }else{
-            playAudioOnce('jumpSfx')
-            player.velocity.y = -3 - (jumpGauge/100)
-            if(currentScene === scene6){
-                player.velocity.y /= 1.6
-            }
-            player.isOnPlatform = false
-            lastJump = Date.now();
-            keyReleased[87] = false
-        }
-    jumpGauge = 0
-    //check jump input and jump if conditions are met with current jumpGauge
-    } else if(keyReleased[87]){
-        if(player.isGrounded || player.isOnPlatform){
+    setTimeout(() => {
+        window.requestAnimationFrame(animate)
+        //update current scene
+        currentScene.update();
+        //update the player 
+        player.update();
+        //handles scene changing 
+        sceneHandler();
+        //check if jump is at max gauge if true jump 
+        if(jumpGauge >= jumpMaxGauge){
+            console.log('max gauge')
+            player.isJumping = true;
             player.chargeBar.tick.width = 3.7
+            jumpGauge = jumpMaxGauge;
             if(keyPressed[65] && lastKey === 'a'){
                 player.currentSprite = player.sprites.idle.left
                 playAudioOnce('jumpSfx')
                 player.velocity.x = -4 - (jumpGauge/550)
                 player.velocity.y = -3 - (jumpGauge/100)
                 if(currentScene === scene6){
-                        player.velocity.y /= 1.6
-                        player.velocity.x /= 1.3
+                    player.velocity.y /= 1.6
+                    player.velocity.x /= 1.3
                 }
-                player.isJumping = true;
                 player.isOnPlatform = false
                 lastJump = Date.now();
                 keyReleased[87] = false
             } else if (keyPressed[68] && lastKey === 'd'){
                 player.currentSprite = player.sprites.idle.right
+                //jumpSfx.play()
                 playAudioOnce('jumpSfx')
                 player.velocity.x = 4 + (jumpGauge/550)
                 player.velocity.y = -3 - (jumpGauge/100)
@@ -563,7 +525,6 @@ function animate(){
                     player.velocity.y /= 1.6
                     player.velocity.x /= 1.3
                 }
-                player.isJumping = true;
                 player.isOnPlatform = false
                 lastJump = Date.now();
                 keyReleased[87] = false
@@ -573,35 +534,78 @@ function animate(){
                 if(currentScene === scene6){
                     player.velocity.y /= 1.6
                 }
-                player.isJumping = true;
                 player.isOnPlatform = false
                 lastJump = Date.now();
                 keyReleased[87] = false
             }
-
-        }
         jumpGauge = 0
-    }
-    // check collision of all current scene's platforms in array and stop player if true
-    currentScene.platformsSprite.forEach(platform => {
-        if(platform.collider.isActive){
-            if(player.colliderBox.position.y + player.colliderBox.height <= platform.collider.position.y 
-                && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
-                && checkColliderSide() + player.colliderBox.width >= platform.collider.position.x - 5
-                && checkColliderSide() <= platform.collider.position.x + platform.collider.width - 1){
-                    if(player.isOnPlatform === false){
-                            playAudioOnce('landSfx')
-                            console.log('ground')
+        //check jump input and jump if conditions are met with current jumpGauge
+        } else if(keyReleased[87]){
+            if(player.isGrounded || player.isOnPlatform){
+                player.chargeBar.tick.width = 3.7
+                if(keyPressed[65] && lastKey === 'a'){
+                    player.currentSprite = player.sprites.idle.left
+                    playAudioOnce('jumpSfx')
+                    player.velocity.x = -4 - (jumpGauge/550)
+                    player.velocity.y = -3 - (jumpGauge/100)
+                    if(currentScene === scene6){
+                            player.velocity.y /= 1.6
+                            player.velocity.x /= 1.3
                     }
-                    player.isOnPlatform = true;
-                    player.isJumping = false;
+                    player.isJumping = true;
+                    player.isOnPlatform = false
+                    lastJump = Date.now();
                     keyReleased[87] = false
-                    player.velocity.y = 0;
-                    player.velocity.x = 0;
+                } else if (keyPressed[68] && lastKey === 'd'){
+                    player.currentSprite = player.sprites.idle.right
+                    playAudioOnce('jumpSfx')
+                    player.velocity.x = 4 + (jumpGauge/550)
+                    player.velocity.y = -3 - (jumpGauge/100)
+                    if(currentScene === scene6){
+                        player.velocity.y /= 1.6
+                        player.velocity.x /= 1.3
+                    }
+                    player.isJumping = true;
+                    player.isOnPlatform = false
+                    lastJump = Date.now();
+                    keyReleased[87] = false
+                }else{
+                    playAudioOnce('jumpSfx')
+                    player.velocity.y = -3 - (jumpGauge/100)
+                    if(currentScene === scene6){
+                        player.velocity.y /= 1.6
+                    }
+                    player.isJumping = true;
+                    player.isOnPlatform = false
+                    lastJump = Date.now();
+                    keyReleased[87] = false
+                }
+    
             }
+            jumpGauge = 0
         }
-    })
-    keyHandlerFunc()
+        // check collision of all current scene's platforms in array and stop player if true
+        currentScene.platformsSprite.forEach(platform => {
+            if(platform.collider.isActive){
+                if(player.colliderBox.position.y + player.colliderBox.height <= platform.collider.position.y 
+                    && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
+                    && checkColliderSide() + player.colliderBox.width >= platform.collider.position.x - 5
+                    && checkColliderSide() <= platform.collider.position.x + platform.collider.width - 1){
+                        if(player.isOnPlatform === false){
+                                playAudioOnce('landSfx')
+                                console.log('ground')
+                        }
+                        player.isOnPlatform = true;
+                        player.isJumping = false;
+                        keyReleased[87] = false
+                        player.velocity.y = 0;
+                        player.velocity.x = 0;
+                }
+            }
+        })
+        keyHandlerFunc()
+    }
+    ,1000/fps)
 }
 
 

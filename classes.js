@@ -23,7 +23,7 @@ class Character{
 
         this.colliderBox = {
             position: this.position,
-            width: 30,
+            width: 32,
             height: this.height
         },
         
