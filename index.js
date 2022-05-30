@@ -369,6 +369,17 @@ const platformsScene5 = [new Sprite({
     borderY : 1,
     borderWidth: 1,
     isWall: true
+}),new Sprite({
+    position: {
+        x: 345,
+        y: 700
+    },
+    width: 30,
+    height: 294,
+    imgSrc: './img/Background/highwallscene52.png',
+    borderY : 1,
+    borderWidth: 1,
+    isWall: true
 })]
 
 const backgroundScene6 = new Sprite({
@@ -441,7 +452,7 @@ const scene5 = new Scene(backgroundScene5,platformsScene5);
 const scene6 = new Scene(backgroundScene6,platformsScene6);
 
 //defaulting current scene to scene 1
-let currentScene = scene1;
+let currentScene = scene5;
 
 //Instance of player
 const player = new Character({
@@ -580,7 +591,7 @@ function animate(){
                 && checkColliderSide() <= platform.collider.position.x + platform.collider.width - 1){
                     if(player.isOnPlatform === false){
                             playAudioOnce('landSfx')
-                            console.log('wall collider')
+                            console.log('ground')
                     }
                     player.isOnPlatform = true;
                     player.isJumping = false;

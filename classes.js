@@ -84,17 +84,21 @@ class Character{
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
         //detect canvas walls collide and bounce off
-        if(this.position.x + this.width + 1 >= canvas.width || this.position.x - 1 <= canvas.width - canvas.width){
-            this.velocity.x *= -1
+        if((this.position.x + this.width >= canvas.width - 1 || this.position.x <= canvas.width - canvas.width + 1)
+            && !this.isOnPlatform){
             playAudioOnce('wallSfx')
+            this.velocity.x *= -1
             switch(player.currentSprite){
                 case player.sprites.idle.right:
                     player.currentSprite = player.sprites.idle.left
-                    break
+                    console.log('wtf1')
+                    break;
                 case player.sprites.idle.left:
                     player.currentSprite = player.sprites.idle.right
-                    break
+                    console.log('wtf2')
+                    break;
             }
+            //this.velocity.x *= -1
         }
         if(this.position.x + this.width + 1 === canvas.width){
             this.velocity.x--
@@ -121,10 +125,11 @@ class Character{
                         player.velocity.x = 0;
                 }
             }
-            if(player.position.y <= platform.position.y + platform.height + 1
-                && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y + 2
+            if(player.position.y <= platform.position.y + platform.height
+                && player.colliderBox.position.y + player.colliderBox.height + player.velocity.y >= platform.collider.position.y
                 && checkColliderSide() + player.colliderBox.width >= platform.collider.position.x
-                && checkColliderSide() <= platform.collider.position.x + platform.collider.width){
+                && checkColliderSide() <= platform.collider.position.x + platform.collider.width
+                && !this.isOnPlatform){
                     if(this.isShovedY === false && this.isShovedX === true){
                         player.velocity.y *= -1
                         playAudioOnce('wallSfx')
@@ -138,12 +143,12 @@ class Character{
         currentScene.platformsSprite.forEach(platform => {
             if(platform.collider.isWall){
                 if(!(player.position.x + player.width + player.velocity.x <= platform.collider.position.x + 1
-                    || player.position.x + player.velocity.x >= platform.collider.position.x + platform.collider.width - 1)){
+                    || player.position.x + player.velocity.x >= platform.collider.position.x + platform.collider.width)){
                         if(player.position.y <= platform.position.y + platform.height
-                            && player.position.y + player.height >= platform.position.y + 1){
-                            if(this.isShovedX === false){
-                                this.velocity.x *= -1
+                            && player.position.y + player.height >= platform.position.y){
+                            if(this.isShovedX === false && !this.isOnPlatform){
                                 playAudioOnce('wallSfx')
+                                this.velocity.x *= -1
                                 switch(player.currentSprite){
                                     case player.sprites.idle.right:
                                         player.currentSprite = player.sprites.idle.left
@@ -152,6 +157,7 @@ class Character{
                                         player.currentSprite = player.sprites.idle.right
                                         break
                                 }
+                                console.log('huh ?')
                                 this.isShovedX = true
                                 setTimeout(() => this.isShovedX = false, 100)
                             }
