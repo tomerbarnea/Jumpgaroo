@@ -485,7 +485,7 @@ let keyReleased = {};
 let lastKey;
 let keyUp;
 
-const fps = 120
+const fps = 90
 //Handling the global updating , gets called every frame
 function animate(){
     //calls animate function every window frame
